@@ -92,7 +92,7 @@ def train(Model,epochs):
             ims = 0
             for im in images:
 
-                imN = addNoise(im)
+                imN = addNoise(im,10)
                 imN = Model(imN)
                 loss += Loss_fn(im,imN)
                 ims+=1
