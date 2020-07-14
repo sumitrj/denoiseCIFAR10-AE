@@ -41,7 +41,7 @@ class AE(nn.Module):
 
     def forward(self, image):
     
-        im = image.flatten()
+        im = image.reshape(3072)
                     
         im = self.l1(im)
         im = self.dropout(im)
