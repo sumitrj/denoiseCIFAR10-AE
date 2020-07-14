@@ -88,6 +88,7 @@ def train(Model,epochs):
         
         for batch_num, images in enumerate(trainloader):
             
+            ims = 0
             for im in images:
 
                 imN = addNoise(im)
@@ -99,7 +100,9 @@ def train(Model,epochs):
             loss.backward()
             optimizer.step()
             Losses.append(loss)
-
+        
+        print('Epoch: ', epoch,  'Loss: ', loss)
+            
     return Losses
     
 Net = AE()
