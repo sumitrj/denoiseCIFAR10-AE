@@ -91,7 +91,7 @@ def train(Model,epochs):
             imN = addNoise(im,10)
             im, imN = im.cuda(), imN.cuda()
             imN = Model(imN)
-            loss += Loss_fn(imN,im)
+            loss = Loss_fn(imN,im)
             
         loss.backward()
         optimizer.step()
