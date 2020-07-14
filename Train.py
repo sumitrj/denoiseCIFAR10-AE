@@ -14,7 +14,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.optim as optim
-import torchvision.models as models
+import torchvision
 
 from torch.utils.data.dataset import Dataset
 import torchvision.transforms as transforms
