@@ -53,8 +53,7 @@ class AE(nn.Module):
         im = self.l3(im)
         im = self.dropout(im)
         
-        im = self.l4(im)
-        im = self.dropout(im)
+        im = self.out(im)
         
         return im
         
