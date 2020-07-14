@@ -75,7 +75,7 @@ def addNoise(image, l):
     f = (torch.max(image) - torch.min(image) )*l/100
     Noise = f*torch.randn(image.shape)
     image = image+Noise
-    
+    return image
     
 def train(Model,epochs):
     
