@@ -25,7 +25,7 @@ transform = transforms.Compose( [transforms.ToTensor(), transforms.Normalize((0.
 
 
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=1, shuffle=True, num_workers=2)
 
 class AE(nn.Module):
 
@@ -85,21 +85,17 @@ def train(Model,epochs):
     
     for epoch in range(epochs):
         
-        for batch_num, images in enumerate(trainloader):
+        for u, (image,id) in enumerate(trainloader):
             
-            ims = 0
-            for im in images:
-
-                imN = addNoise(im,10)
-                im, imN = im.cuda(), imN.cuda()
-                imN = Model(imN)
-                loss += Loss_fn(imN,im)
-                ims+=1
-        
-            loss = loss/ims
-            loss.backward()
-            optimizer.step()
-            Losses.append(loss)
+            im = image[0]
+            imN = addNoise(im,10)
+            im, imN = im.cuda(), imN.cuda()
+            imN = Model(imN)
+            loss += Loss_fn(imN,im)
+            
+        loss.backward()
+        optimizer.step()
+        Losses.append(loss)
         
         print('Epoch: ', epoch,  'Loss: ', loss)
             
