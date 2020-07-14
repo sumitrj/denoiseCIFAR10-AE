@@ -91,8 +91,8 @@ def train(Model,epochs):
             for im in images:
 
                 imN = addNoise(im,10)
-                imN = Model(imN)
                 im, imN = im.cuda(), imN.cuda()
+                imN = Model(imN)
                 loss += Loss_fn(imN,im)
                 ims+=1
         
