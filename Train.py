@@ -33,12 +33,11 @@ class AE(nn.Module):
     
         super(AE, self).__init__()
         
-        self.size = 32*32*3
         self.dropout = nn.Dropout(p=0.3, inplace=False)
-        self.l1 = nn.Linear(self.size,self.size,True)
-        self.l2 = nn.Linear(self.size,self.size,True)
-        self.l3 = nn.Linear(self.size,self.size,True)
-        self.out = nn.Linear(self.size,self.size,True)       
+        self.l1 = nn.Linear(32*32*3,32*32*3,True)
+        self.l2 = nn.Linear(32*32*3,32*32*3,True)
+        self.l3 = nn.Linear(32*32*3,32*32*3,True)
+        self.out = nn.Linear(32*32*3,32*32*3,True)       
 
     def forward(self, image):
     
@@ -62,11 +61,11 @@ class Loss(nn.Module):
     def __init__(self):
         super(Loss, self).__init__()
        
-    def forward(self, image, result):
+    def forward(self, output, target):
 
-        res = result.reshape(3,32,32)
-        X = image
-        Y = res
+        output = output.reshape(3,32,32)
+        X = output
+        Y = target
         gauss_loss = torch.sum(1-torch.exp(-(X-Y)**2))
         return gauss_loss
         
@@ -94,7 +93,7 @@ def train(Model,epochs):
                 imN = addNoise(im,10)
                 imN = Model(imN)
                 im, imN = im.cuda(), imN.cuda()
-                loss += Loss_fn(im,imN)
+                loss += Loss_fn(imN,im)
                 ims+=1
         
             loss = loss/ims
