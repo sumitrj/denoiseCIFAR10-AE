@@ -66,7 +66,7 @@ class Loss(nn.Module):
         output = output.reshape(3,32,32)
         X = output
         Y = target
-        gauss_loss = torch.sum((X-Y)**2))
+        gauss_loss = torch.sum((X-Y)**2)
         return gauss_loss
         
 def addNoise(image, l):
