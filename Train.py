@@ -34,10 +34,10 @@ class AE(nn.Module):
         
         self.size = 32*32*3
         self.dropout = nn.Dropout(p=0.3, inplace=False)
-        self.l1 = nn.Linear(self.size,self.size/4,True)
-        self.l2 = nn.Linear(self.size/4,self.size,True)
-        self.l3 = nn.Linear(self.size,self.size/4,True)
-        self.out = nn.Linear(self.size/4,self.size,True)       
+        self.l1 = nn.Linear(self.size,self.size,True)
+        self.l2 = nn.Linear(self.size,self.size,True)
+        self.l3 = nn.Linear(self.size,self.size,True)
+        self.out = nn.Linear(self.size,self.size,True)       
 
     def forward(self, image):
     
