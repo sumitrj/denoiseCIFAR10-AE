@@ -66,7 +66,7 @@ class Loss(nn.Module):
         output = output.reshape(3,32,32)
         X = output
         Y = target
-        gauss_loss = torch.sum((X-Y)**2)
+        gauss_loss = torch.log(torch.sum((X-Y)**2)) 
         return gauss_loss
         
 def addNoise(image, l):
@@ -81,7 +81,6 @@ def train(Model,epochs):
     optimizer = optim.SGD(Model.parameters(), lr=0.01, momentum=0.9)
     Loss_fn = Loss()
     Losses = []
-    ims = 0
     
     for epoch in range(epochs):
         
