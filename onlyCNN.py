@@ -60,7 +60,7 @@ class AE(nn.Module):
     
     def __init__(self):
         
-        super(tmod,self).__init__()
+        super(AE,self).__init__()
         
         self.conv1 = nn.Conv2d(3, 6, 3)
         self.conv2 = nn.Conv2d(6,3,3)
