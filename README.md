@@ -1,7 +1,6 @@
-# dcf10
-Denoise CIFAR10 using Autoencoder
+# Denoise CIFAR10 dataset using autoencoders
 
-# Goal:
+## Goal:
 To make an autoencoder which takes input of images and returns denoised images.
 
 ## Approach:
