@@ -107,6 +107,7 @@ def train(Model,epochs):
         for u, (image,id) in enumerate(trainloader):
             
             im = image[0]
+            im = im.view(1,3,32,32)
             imN = addNoise(im,10)
             im, imN = im.cuda(), imN.cuda()
             imN = Model(imN)
