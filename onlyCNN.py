@@ -99,7 +99,7 @@ def addNoise(image, l):
 def train(Model,epochs):
     
     optimizer = optim.SGD(Model.parameters(), lr=0.01, momentum=0.9)
-    Loss_fn = Loss()
+    Loss_fn = nn.MSELoss()
     Losses = []
     
     for epoch in range(epochs):
