@@ -27,7 +27,7 @@ transform = transforms.Compose( [transforms.ToTensor(), transforms.Normalize((0.
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=1, shuffle=True, num_workers=2)
 
-class AE(nn.Module):
+class AE1(nn.Module):
 
     def __init__(self):
     
@@ -56,7 +56,7 @@ class AE(nn.Module):
         
         return im
 
-class AE2(nn.Module):
+class AE(nn.Module):
     
     def __init__(self):
         
